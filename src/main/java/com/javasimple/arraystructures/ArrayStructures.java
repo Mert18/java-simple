@@ -59,6 +59,31 @@ public class ArrayStructures {
         }
     }
 
+    public void selectionSort(){
+        for(int x=0; x<arraySize; x++){
+            int minimum = x;
+            for(int y=x; y<arraySize; y++){
+                if(theArray[minimum] > theArray[y]){
+                    minimum = y;
+                }
+            }
+            swapValues(x, minimum);
+        }
+    }
+
+    public void insertionSort(){
+        for(int i = 1; i < arraySize; i++){
+            int j = i;
+            int toInsert = theArray[i];
+
+            while((j >0) && (theArray[j-1] > toInsert)){
+                theArray[j] = theArray[j-1];
+                j--;
+            }
+            theArray[j] = toInsert;
+        }
+    }
+
     public void binarySearch(int value){
         int lowIndex = 0;;
         int highIndex = arraySize -1;
@@ -107,9 +132,19 @@ public class ArrayStructures {
 
         System.out.println("After Bubble Sort!");
         newArray.bubbleSort();
+        newArray.printArray();
 
         System.out.println("Binary Search for 333!");
         newArray.binarySearch(333);
+
+        System.out.println("After Selection Sort!");
+        newArray.selectionSort();
+        newArray.printArray();
+
+        System.out.println("After Insertion Sort!");
+        newArray.insertionSort();
+        newArray.printArray();
+
 
     }
 }
